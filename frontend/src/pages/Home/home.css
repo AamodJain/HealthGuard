@@ -99,9 +99,11 @@ body {
     padding: 0 2rem;
   }
   
-  .section-title {
+  .section-title-home {
+    display: flex;
+    justify-content: center;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 30px;
     font-weight: 700;
     margin-bottom: 3rem;
     color: #ffffff;
@@ -192,7 +194,7 @@ body {
     gap: 2rem;
   }
   
-  .stat-card {
+  .stat-card-home {
     text-align: center;
     padding: 2rem 1rem;
     background: #2e2e2e;
@@ -201,7 +203,7 @@ body {
     transition: all 0.3s ease;
   }
   
-  .stat-card:hover {
+  .stat-card-home:hover {
     transform: translateY(-3px);
     border-color: #5c5c5c;
   }

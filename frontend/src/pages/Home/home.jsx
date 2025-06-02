@@ -61,7 +61,7 @@ function Home() {
       {/* Features Section */}
       <section className="features-section">
         <div className="features-container">
-          <h2 className="section-title">Why Choose Edu Buddy?</h2>
+          <h2 className="section-title-home">Why Choose Edu Buddy?</h2>
           <div className="features-grid">
             {features.map((feature, index) => (
               <div key={index} className="feature-card">
@@ -81,7 +81,7 @@ function Home() {
         <div className="stats-container">
           <div className="stats-grid">
             {stats.map((stat, index) => (
-              <div key={index} className="stat-card">
+              <div key={index} className="stat-card-home">
                 <div className="stat-number">{stat.number}</div>
                 <div className="stat-label">{stat.label}</div>
               </div>
