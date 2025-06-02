@@ -5,8 +5,10 @@ import ContactPage from './pages/contact/contact';
 import About from './pages/About/About';
 import Login from './pages/auth/login';
 import Signup from './pages/auth/signup';
+import Profile from './pages/profile/profile';
+import Dashboard from './pages/Dashboard/Dashboard';
 import {Toaster} from 'react-hot-toast';
-import { useAuthContext } from './context/authContext'
+
 
 function App() {
   // const {authUser} = useAuthContext();
@@ -20,6 +22,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         {/* Add more routes as needed */}
 
       </Routes>

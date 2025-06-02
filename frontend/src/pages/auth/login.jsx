@@ -28,6 +28,7 @@ export default function LoginPage() {
                 localStorage.setItem("user", JSON.stringify(response.data));
                 toast.success("Login successful!");
                 navigate("/");
+                window.location.reload();
             }
         } catch (err) {
             toast.error(err.response?.data?.detail || "Login failed. Please try again.");

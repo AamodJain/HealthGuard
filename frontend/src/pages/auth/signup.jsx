@@ -32,8 +32,10 @@ export default function SignupPage() {
             if (response.data.token) {
                 localStorage.setItem("token", response.data.token);
                 localStorage.setItem("user", JSON.stringify(response.data));
+                // window.location.reload(); // Reload the page to update the auth context
                 toast.success("Signup successful!");
                 navigate("/");
+                window.location.reload(); // Reload the page to update the auth context
             }
         } catch (err) {
             toast.error(err.response?.data?.detail || "Signup failed. Please try again.");
@@ -54,9 +56,9 @@ export default function SignupPage() {
                             <input
                                 className="signup-input"
                                 type="text"
-                                id="firstName"
-                                name="firstName"
-                                value={form.firstName}
+                                id="first_name"
+                                name="first_name"
+                                value={form.first_name}
                                 onChange={handleChange}
                                 required
                                 placeholder="First Name"
@@ -64,16 +66,16 @@ export default function SignupPage() {
                             />
                         </div>
                         <div className="signup-name-box" style={{ position: "relative" }}>
-                            <label className="signup-label" htmlFor="lastName">Last Name</label>
+                            <label className="signup-label" htmlFor="last_name">Last Name</label>
                             <span className="signup-icon">
                                 <User size={20} />
                             </span>
                             <input
                                 className="signup-input"
                                 type="text"
-                                id="lastName"
-                                name="lastName"
-                                value={form.lastName}
+                                id="last_name"
+                                name="last_name"
+                                value={form.last_name}
                                 onChange={handleChange}
                                 required
                                 placeholder="Last Name"

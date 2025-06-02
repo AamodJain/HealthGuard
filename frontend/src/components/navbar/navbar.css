@@ -20,7 +20,24 @@
     font-family: 'myfont', sans-serif;
     font-weight: bold;
     font-size: 1.75rem;
-    
+
+}
+
+
+.profile-button{
+    background-color: transparent;
+    border: none;
+}
+
+.profile-modal-icon {
+    color : white;
+    width: 38px;
+    height: 38px;
+    background: transparent;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .home-navbar-links {
@@ -73,17 +90,18 @@
     transition: background-color 0.2s, color 0.2s;
 }
 
-.home-login-button:hover {
+.home-icon-button:hover {
     background: #fff;
     color: #000;
 }
 
 .head {
-  background: linear-gradient(90deg, #f5b2f1, #cbaaf4); /* Customize your gradient */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    background: linear-gradient(90deg, #f5b2f1, #cbaaf4);
+    /* Customize your gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
-  /* For some browsers */
-  background-clip: text;
-  color: transparent;
+    /* For some browsers */
+    background-clip: text;
+    color: transparent;
 }
