@@ -1,0 +1,89 @@
+/* write navbar here */
+
+.home-navbar {
+    background: #171717;
+    /* background-color: red; */
+    padding: 25px 35px;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    /* make it transparent */
+    /* background-color: transparent; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-navbar-brand {
+    font-family: 'myfont', sans-serif;
+    font-weight: bold;
+    font-size: 1.75rem;
+    
+}
+
+.home-navbar-links {
+    background-color: #222222;
+    border-radius: 50px;
+    height: 50px;
+    width: 100%;
+    max-width: 450px;
+    justify-content: center;
+    /* width: 100%; */
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    margin-right: 100px;
+}
+
+.home-navbar-links li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s;
+    font-size: 20px;
+    font-family: sans-serif;
+    margin: 0 20px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.home-navbar-links li a:hover {
+    color: #000;
+    background: #fff;
+}
+
+.home-login-button {
+    /* background: #171717;
+    color: #ffffff; */
+    width: 100px;
+    color: #171717;
+    background-color: #ffffff;
+    padding: 10px 10px;
+    font-size: 20px;
+    border: none;
+    border-radius: 150px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.home-login-button:hover {
+    background: #fff;
+    color: #000;
+}
+
+.head {
+  background: linear-gradient(90deg, #f5b2f1, #cbaaf4); /* Customize your gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* For some browsers */
+  background-clip: text;
+  color: transparent;
+}
