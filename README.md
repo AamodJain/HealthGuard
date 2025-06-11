@@ -1,2 +1,2 @@
 # Edu-Buddy
-Edu Buddy
+HealthGuard

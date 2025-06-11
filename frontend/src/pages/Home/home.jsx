@@ -1,4 +1,4 @@
-import { BookOpen, Brain, Zap, Target } from "lucide-react"
+import { Microscope, Activity, Radar, Globe, Users } from "lucide-react"
 import "./home.css"
 import { Link } from "react-router-dom"
 import SplineScene from "../../components/splineScene"
@@ -9,32 +9,38 @@ function Home() {
 
   const features = [
     {
-      icon: BookOpen,
-      title: "Interactive Learning",
-      description: "Engage with dynamic content that adapts to your learning style and pace.",
+      icon: Microscope,
+      title: "Data Aggregation & Integration",
+      description: "Integrates epidemiological, clinical, mobility, demographic, environmental, and social media data using seamless API-led connectivity.",
     },
     {
-      icon: Brain,
-      title: "AI-Powered Learning",
-      description: "Personalized learning paths adapted to your unique learning style and pace.",
+      icon: Radar,
+      title: "AI-Powered Predictive Modeling",
+      description: "Leverages machine learning to identify disease trends and predict outbreak probabilities for early alerts.",
     },
     {
-      icon: Zap,
-      title: "Real-time Feedback",
-      description: "Get instant feedback and suggestions to improve your learning outcomes.",
+      icon: Activity,
+      title: "Real-Time Monitoring & Alerts",
+      description: "Continuously monitors incoming data streams and instantly notifies authorities of potential outbreaks.",
     },
     {
-      icon: Target,
-      title: "Personalized Goals",
-      description: "Set custom learning objectives and receive tailored recommendations.",
+      icon: Globe,
+      title: "Comprehensive Disease Insights",
+      description: "Combines structured and unstructured data to visualize and analyze disease dynamics, risk factors, and hotspots.",
+    },
+    {
+      icon: Users,
+      title: "Collaboration & Public Engagement",
+      description: "Facilitates communication between health authorities, providers, and the public to coordinate response efforts effectively.",
     },
   ]
 
   const stats = [
-    { number: "10K+", label: "Active Learners" },
-    { number: "500+", label: "Courses Available" },
-    { number: "98%", label: "Success Rate" },
-    { number: "24/7", label: "Support Available" },
+    { number: "50K+", label: "Data Sources Monitored" },
+    { number: "200+", label: "Outbreaks Predicted Early" },
+    { number: "15M+", label: "Citizens Protected" },
+    { number: "100+", label: "Health Care Providers" },
+    { number: "100+", label: "Medical Experts" }
   ]
 
   return (
@@ -44,7 +50,7 @@ function Home() {
         <div className="left-box">
           <h1 className="main-heading">
             Welcome to <br />
-            <span className="head">Edu Buddy</span>
+            <span className="head">HealthGuard</span>
           </h1>
           <p className="sub-heading">Learning made simple, effective, and engaging</p>
         
@@ -61,7 +67,7 @@ function Home() {
       {/* Features Section */}
       <section className="features-section">
         <div className="features-container">
-          <h2 className="section-title-home">Why Choose Edu Buddy?</h2>
+          <h2 className="section-title-home">Why Choose HealthGuard?</h2>
           <div className="features-grid">
             {features.map((feature, index) => (
               <div key={index} className="feature-card">

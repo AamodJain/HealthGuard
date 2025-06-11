@@ -27,7 +27,7 @@ function Navbar() {
   return (
     <>
     <nav className="home-navbar">
-      <div className="home-navbar-brand" >Edu Buddy</div>
+      <div className="home-navbar-brand" >HealthGuard</div>
       <div><ul className="home-navbar-links">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>

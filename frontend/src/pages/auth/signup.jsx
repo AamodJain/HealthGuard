@@ -12,6 +12,7 @@ export default function SignupPage() {
         last_name: "",
         email: "",
         password: "",
+        role: ""
     });
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();

@@ -1,5 +1,5 @@
 "use client"
-import { Calendar, TrendingUp, Clock, Award, BookOpen, Target } from "lucide-react"
+import { Calendar, TrendingUp, Clock, AlertCircle, Radar, Globe } from "lucide-react"
 import { useAuthContext } from "../../context/authContext"
 import Navbar from "../../components/navbar/navbar"
 import Footer from "../../components/footer/Footer"
@@ -22,7 +22,6 @@ const Dashboard = () => {
         )
     }
 
-    // Generate sample heatmap data (past 365 days)
     const generateHeatmapData = () => {
         const data = []
         const today = new Date()
@@ -31,7 +30,7 @@ const Dashboard = () => {
             date.setDate(date.getDate() - i)
             data.push({
                 date: date.toISOString().split("T")[0],
-                count: Math.floor(Math.random() * 5), // 0-4 activity levels
+                count: Math.floor(Math.random() * 5),
             })
         }
         return data
@@ -40,20 +39,20 @@ const Dashboard = () => {
     const heatmapData = generateHeatmapData()
 
     const weeklyData = [
-        { day: "Mon", hours: 2.5 },
-        { day: "Tue", hours: 1.8 },
-        { day: "Wed", hours: 3.2 },
-        { day: "Thu", hours: 2.1 },
-        { day: "Fri", hours: 1.5 },
-        { day: "Sat", hours: 4.0 },
-        { day: "Sun", hours: 3.5 },
+        { day: "Mon", hours: 40 },
+        { day: "Tue", hours: 55 },
+        { day: "Wed", hours: 30 },
+        { day: "Thu", hours: 45 },
+        { day: "Fri", hours: 60 },
+        { day: "Sat", hours: 35 },
+        { day: "Sun", hours: 25 },
     ]
 
     const dashboardStats = [
-        { icon: Clock, title: "Total Hours", value: authUser.hoursLearned || 0, change: "+12%" },
-        { icon: BookOpen, title: "Courses", value: "15", change: "+25%" },
-        { icon: Award, title: "Certificates", value: "8", change: "+3%" },
-        { icon: Target, title: "Goals Met", value: "12/15", change: "+80%" },
+        { icon: Globe, title: "Regions Monitored", value: "132", change: "+8%" },
+        { icon: AlertCircle, title: "Active Alerts", value: "17", change: "+23%" },
+        { icon: Radar, title: "AI Predictions", value: "89", change: "+12%" },
+        { icon: Clock, title: "Avg Response Time", value: "2.4h", change: "-6%" },
     ]
 
     const getActivityLevel = (count) => {
@@ -69,13 +68,11 @@ const Dashboard = () => {
             <Navbar />
 
             <div className="dashboard-container">
-                {/* Dashboard Header */}
                 <div className="dashboard-header">
                     <h1 className="dashboard-title">Welcome back, {authUser.first_name}!</h1>
-                    <p className="dashboard-subtitle">Here's your learning progress overview</p>
+                    <p className="dashboard-subtitle">Here’s your disease surveillance overview</p>
                 </div>
 
-                {/* Stats Cards */}
                 <div className="dashboard-stats">
                     <div className="stats-grid">
                         {dashboardStats.map((stat, index) => (
@@ -95,11 +92,10 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                {/* Learning Activity Heatmap */}
                 <div className="dashboard-section">
                     <h2 className="section-title">
                         <Calendar size={20} />
-                        Learning Activity
+                        Alert Activity
                     </h2>
                     <div className="heatmap-container">
                         <div className="heatmap-grid">
@@ -107,12 +103,12 @@ const Dashboard = () => {
                                 <div
                                     key={index}
                                     className={`heatmap-cell ${getActivityLevel(day.count)}`}
-                                    title={`${day.date}: ${day.count} activities`}
+                                    title={`${day.date}: ${day.count} alerts`}
                                 />
                             ))}
                         </div>
                         <div className="heatmap-legend">
-                            <span>Less</span>
+                            <span>Fewer</span>
                             <div className="legend-cells">
                                 <div className="legend-cell none" />
                                 <div className="legend-cell low" />
@@ -124,11 +120,10 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                {/* Weekly Progress Chart */}
                 <div className="dashboard-section">
                     <h2 className="section-title">
                         <TrendingUp size={20} />
-                        Weekly Progress
+                        Weekly Outbreak Trends
                     </h2>
                     <div className="chart-container">
                         <div className="bar-chart">
@@ -136,64 +131,63 @@ const Dashboard = () => {
                                 <div key={index} className="bar-item">
                                     <div
                                         className="bar"
-                                        style={{ height: `${(day.hours / 4) * 100}%` }}
-                                        title={`${day.day}: ${day.hours} hours`}
+                                        style={{ height: `${(day.hours / 60) * 100}%` }}
+                                        title={`${day.day}: ${day.hours} cases`}
                                     />
                                     <span className="bar-label">{day.day}</span>
                                 </div>
                             ))}
                         </div>
                         <div className="chart-y-axis">
-                            <span>4h</span>
-                            <span>3h</span>
-                            <span>2h</span>
-                            <span>1h</span>
-                            <span>0h</span>
+                            <span>60+</span>
+                            <span>45</span>
+                            <span>30</span>
+                            <span>15</span>
+                            <span>0</span>
                         </div>
                     </div>
                 </div>
 
-                {/* Current Goals */}
                 <div className="dashboard-section">
                     <h2 className="section-title">
-                        <Target size={20} />
-                        Current Goals
+                        <Radar size={20} />
+                        Ongoing Health Objectives
                     </h2>
                     <div className="goals-container">
                         <div className="goal-item">
                             <div className="goal-info">
-                                <h3>Complete JavaScript Course</h3>
-                                <p>Finish all modules by end of month</p>
-                            </div>
-                            <div className="goal-progress">
-                                <div className="progress-bar">
-                                    <div className="progress-fill" style={{ width: "75%" }} />
-                                </div>
-                                <span className="progress-text">75%</span>
-                            </div>
-                        </div>
-                        <div className="goal-item">
-                            <div className="goal-info">
-                                <h3>Study 20 hours this week</h3>
-                                <p>Current week learning target</p>
+                                <h3>Expand Coverage to 5 New Regions</h3>
+                                <p>Targeted surveillance expansion this month</p>
                             </div>
                             <div className="goal-progress">
                                 <div className="progress-bar">
                                     <div className="progress-fill" style={{ width: "60%" }} />
                                 </div>
-                                <span className="progress-text">12/20h</span>
+                                <span className="progress-text">3/5</span>
                             </div>
                         </div>
                         <div className="goal-item">
                             <div className="goal-info">
-                                <h3>Earn 3 Certificates</h3>
-                                <p>Complete certification courses</p>
+                                <h3>Detect 10 Early-Stage Outbreaks</h3>
+                                <p>Using predictive models and alerting tools</p>
                             </div>
                             <div className="goal-progress">
                                 <div className="progress-bar">
-                                    <div className="progress-fill" style={{ width: "67%" }} />
+                                    <div className="progress-fill" style={{ width: "70%" }} />
                                 </div>
-                                <span className="progress-text">2/3</span>
+                                <span className="progress-text">7/10</span>
+                            </div>
+                        </div>
+                        <div className="goal-item">
+                            <div className="goal-info">
+                                <h3>Reduce Average Response Time</h3>
+                                <p>Optimize the alert-to-action workflow</p>
+                            </div>
+                            <div className="goal-progress">
+                                <div className="progress-bar">
+                                    <div className="progress-fill" style={{ width: "50%" }} />
+                                </div>
+                                <span className="progress-text">2.4h avg</span>
                             </div>
                         </div>
                     </div>

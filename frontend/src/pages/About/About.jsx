@@ -1,4 +1,4 @@
-import { Target, Heart, Lightbulb } from "lucide-react"
+import { ShieldCheck, Globe, ActivitySquare } from "lucide-react"
 import Navbar from "../../components/navbar/navbar"
 import Footer from "../../components/footer/Footer"
 import "./About.css"
@@ -39,10 +39,10 @@ const About = () => {
       <section className="about-hero">
         <div className="about-hero-container">
           <h1 className="about-hero-title">
-            About <span className="head">Edu Buddy</span>
+            About <span className="head">HealthGuard</span>
           </h1>
           <p className="about-hero-subtitle">
-            Transforming education through innovative technology and personalized learning experiences
+            Empowering global health through AI-driven disease outbreak prediction and prevention
           </p>
         </div>
       </section>
@@ -54,30 +54,30 @@ const About = () => {
             <div className="mission-text">
               <h2 className="mission-title">Our Mission</h2>
               <p className="mission-description">
-                At Edu Buddy, we believe that learning should be accessible, engaging, and tailored to each individual's
-                unique needs. Our mission is to democratize education by providing cutting-edge tools and resources that
-                empower learners worldwide to achieve their full potential.
+                At HealthGuard, our mission is to safeguard communities by predicting and detecting early-stage disease
+                outbreaks using cutting-edge AI and data science. We strive to equip health authorities with tools to make
+                faster, more informed decisions.
               </p>
               <p className="mission-description">
-                We're committed to breaking down barriers in education and creating a future where everyone has the
-                opportunity to learn, grow, and succeed regardless of their background or circumstances.
+                By combining structured and unstructured data from diverse sources, we aim to create a proactive, inclusive,
+                and transparent disease surveillance ecosystem.
               </p>
             </div>
             <div className="mission-values">
               <div className="value-item">
-                <Target className="value-icon" />
+                <ShieldCheck className="value-icon" />
                 <h3>Excellence</h3>
-                <p>Striving for the highest quality in everything we do</p>
+                <p>Delivering reliable and robust AI solutions for public health infrastructure</p>
               </div>
               <div className="value-item">
-                <Heart className="value-icon" />
-                <h3>Inclusivity</h3>
-                <p>Making education accessible to learners of all backgrounds</p>
+                <Globe className="value-icon" />
+                <h3>Transparency</h3>
+                <p>Building trust through open, accessible, and ethical use of data</p>
               </div>
               <div className="value-item">
-                <Lightbulb className="value-icon" />
+                <ActivitySquare className="value-icon" />
                 <h3>Innovation</h3>
-                <p>Continuously pushing the boundaries of educational technology</p>
+                <p>Continuously evolving with state-of-the-art technology to tackle modern health challenges</p>
               </div>
             </div>
           </div>
@@ -88,7 +88,7 @@ const About = () => {
       <section className="team-section">
         <div className="team-container">
           <h2 className="team-title">Meet Our Team</h2>
-          <p className="team-subtitle">The passionate individuals behind Edu Buddy's vision</p>
+          <p className="team-subtitle">The minds behind HealthGuard’s AI for health innovation</p>
           <div className="team-grid">
             {teamMembers.map((member, index) => (
               <div key={index} className="team-card">

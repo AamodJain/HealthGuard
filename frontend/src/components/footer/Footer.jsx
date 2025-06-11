@@ -6,8 +6,9 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-content">
           <div className="footer-section">
-            <h3 className="footer-brand">Edu Buddy</h3>
-            <p className="footer-description">Empowering learners worldwide with personalized education experiences.</p>
+            <h3 className="footer-brand">HealthGuard</h3>
+            <p className="footer-description">Empowering public health systems with AI-driven outbreak prediction and real-time insights.</p>
+
           </div>
 
           <div className="footer-section">
@@ -60,7 +61,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; 2024 Edu Buddy. All rights reserved.</p>
+          <p>&copy; 2024 HealthGuard. All rights reserved.</p>
         </div>
       </div>
     </footer>

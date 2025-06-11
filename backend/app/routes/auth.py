@@ -57,6 +57,7 @@ async def login(user: LoginRequest):
     return UserResponse(
         first_name=existing_user.first_name,
         last_name=existing_user.last_name,
+        role=existing_user.role,
         email=existing_user.email,
         token=token
     )

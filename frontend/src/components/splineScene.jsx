@@ -1,9 +1,16 @@
 import Spline from '@splinetool/react-spline';
 
+// export default function splineScene() {
+//   return (
+//     <div className="spline-scene">
+//     <Spline scene="https://prod.spline.design/o9sAfHh2aKK2Mexv/scene.splinecode" /></div>
+//   );
+// }
+
 export default function splineScene() {
   return (
     <div className="spline-scene">
-    <Spline scene="https://prod.spline.design/o9sAfHh2aKK2Mexv/scene.splinecode" /></div>
+    <Spline scene="https://prod.spline.design/aQrz8lMV4I2r15FR/scene.splinecode" /></div>
   );
 }
 
