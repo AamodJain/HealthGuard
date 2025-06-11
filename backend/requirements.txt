@@ -9,3 +9,4 @@ mongoengine
 passlib[bcrypt] 
 pydantic[email]
 PyJWT
+bcrypt==3.2.0

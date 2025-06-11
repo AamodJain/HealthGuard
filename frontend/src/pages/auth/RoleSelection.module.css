@@ -1,0 +1,100 @@
+/* RoleSelection.module.css */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #000000; /* Solid black background */
+  padding: 2rem;
+  gap: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.title {
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.buttonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.button {
+  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  border-radius: 1.25rem;
+  padding: 2rem 2rem;
+  min-width: 180px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+.icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Remove outline border on focus */
+.button:focus {
+  outline: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .button {
+    width: 100%;
+    min-height: 140px;
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .icon {
+    font-size: 2.5rem;
+  }
+}
+
+/* Spline 3D icon container (enlarged and fixed left-middle) */
+.splineContainer {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 450px; /* Bigger size */
+  height: 450px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Hide Spline on smaller screens for responsiveness */
+@media (max-width: 768px) {
+  .splineContainer {
+    display: none;
+  }
+}

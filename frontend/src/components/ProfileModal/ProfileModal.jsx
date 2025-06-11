@@ -25,7 +25,7 @@ const ProfileModal = ({ isOpen, onClose, onNavigate }) => {
                 <div className="profile-modal-header">
                     <User size={25} />
                     <div className="profile-info">
-                        <h3>{authUser?.first_name} {authUser?.last_name}</h3>
+                        <h3>{authUser?.firstName} {authUser?.lastName}</h3>
                         <p>{authUser?.email}</p>
                     </div>
                 </div>
