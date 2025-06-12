@@ -153,6 +153,8 @@ def safe_gauss(mu: float):
 
 # ── Simulation ────────────────────────────────────────────────────────────────
 def simulate_day():
+    insert_dummy_disease_record()
+    
     for rec in disease.objects:
         d = disease.objects.get(id=rec.id)
         N  = d.population
@@ -208,13 +210,9 @@ def simulate_day():
               f"→ Tot={T2:5.0f}, Act={I2:4.0f}, Dth={D2:4.0f}")
 
 def simulate():
-    schedule.every(0.1).minutes.do(lambda: save_to_mongodb(generate_mobility_matrix()))
-    temp=0
+    schedule.every(0.1).minutes.do(simulate_day)
+
+    print("Starting simulation scheduler (run every 2 minutes)...")
     while True:
-        if(temp==0):
-            schedule.insert_dummy_disease_record()
-        temp+=1
-        if(temp==3):
-            temp=0
-        schedule.simulate_day()
+        schedule.run_pending()
         sleep(1)
