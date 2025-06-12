@@ -1,0 +1,103 @@
+.updates-bg {
+  background-color: #171717;
+  color: #ffffff;
+  min-height: 100vh;
+  padding-bottom: 60px;
+  font-family: "roboto", sans-serif;
+}
+
+.updates-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 2rem 40px;
+}
+
+.updates-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-family: "myfont", sans-serif;
+  background: linear-gradient(90deg, #f5b2f1, #cbaaf4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.updates-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.update-card {
+  background: #1f1f1f;
+  border: 1px solid #2e2e2e;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 320px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.update-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border-color: #5c5c5c;
+}
+
+.disease-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  background: linear-gradient(90deg, #f5b2f1, #cbaaf4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cases-section,
+.precautions-section {
+  margin-top: 1.2rem;
+}
+
+.cases-section h3,
+.precautions-section h3 {
+  font-size: 1.2rem;
+  color: #f5b2f1;
+  margin-bottom: 0.5rem;
+}
+
+.cases-list,
+.precautions-list {
+  list-style: none;
+  padding-left: 0;
+  color: #d0d0d0;
+  line-height: 1.6;
+}
+
+.state-name {
+  font-weight: 600;
+  color: #cbaaf4;
+}
+
+.case-count {
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .updates-container {
+    padding-top: 80px;
+  }
+
+  .update-card {
+    width: 100%;
+  }
+
+  .updates-title {
+    font-size: 2rem;
+  }
+}

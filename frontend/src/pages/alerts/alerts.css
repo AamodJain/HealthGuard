@@ -1,0 +1,115 @@
+.alerts-bg {
+  background-color: #171717;
+  color: #ffffff;
+  min-height: 100vh;
+  font-family: "roboto", sans-serif;
+  padding-bottom: 60px;
+}
+
+.alerts-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 2rem 40px;
+}
+
+.alerts-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-family: "myfont", sans-serif;
+  background: linear-gradient(90deg, #f5b2f1, #cbaaf4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.alerts-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.alert-card {
+  background: #1f1f1f;
+  border: 1px solid #2e2e2e;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 320px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.alert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border-color: #5c5c5c;
+}
+
+.alert-disease {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(90deg, #f5b2f1, #cbaaf4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.alert-risk {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  display: inline-block;
+  margin-bottom: 1rem;
+  background: #333;
+  text-align: center;
+}
+
+.alert-risk[data-risk="High"] {
+  background: linear-gradient(90deg, #ff6b6b, #ff9a9e);
+  color: #fff;
+}
+
+.alert-risk[data-risk="Moderate"] {
+  background: linear-gradient(90deg, #fceabb, #f8b500);
+  color: #171717;
+}
+
+.alert-risk[data-risk="Low"] {
+  background: linear-gradient(90deg, #a1ffce, #faffd1);
+  color: #171717;
+}
+
+.alert-risk[data-risk="Severe"] {
+  background: linear-gradient(90deg, #d31027, #ea384d);
+  color: #fff;
+}
+
+.alert-states h3,
+.alert-reasons h3 {
+  font-size: 1.1rem;
+  color: #cbaaf4;
+  margin-bottom: 0.5rem;
+}
+
+.alert-states ul,
+.alert-reasons ul {
+  padding-left: 1rem;
+  line-height: 1.6;
+  color: #d0d0d0;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .alerts-title {
+    font-size: 2rem;
+  }
+
+  .alert-card {
+    width: 100%;
+  }
+}

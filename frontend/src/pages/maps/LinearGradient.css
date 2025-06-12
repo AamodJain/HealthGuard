@@ -1,0 +1,22 @@
+.linear-box {
+  width: 180px;
+  margin: auto;
+}
+
+.gradient-bar {
+  height: 20px;
+}
+
+.mt8 {
+  margin-top: 8px;
+}
+
+.display-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fill {
+  flex: 1;
+}

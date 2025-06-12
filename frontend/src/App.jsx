@@ -8,6 +8,9 @@ import RoleSelection from "./pages/auth/RoleSelection";
 import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import Dashboard from './pages/Dashboard/Dashboard';
+import Updates from './pages/updates/updates';
+import Alerts from './pages/alerts/alerts';
+import Map from './pages/maps/map';
 import {Toaster} from 'react-hot-toast';
 
 
@@ -26,6 +29,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/updates" element={<Updates />} />
+        <Route path="/alerts" element={<Alerts />} />
+        <Route path="/map" element={<Map />} />
         {/* Add more routes as needed */}
 
       </Routes>

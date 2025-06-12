@@ -5,7 +5,7 @@ import app.utils.database
 from mongoengine import connect
 import os
 from dotenv import load_dotenv
-
+from app.utils.mobility import function_to_run
 
 load_dotenv()
 
@@ -19,6 +19,8 @@ try:
 except Exception as e:
     print(f"❌ Failed to connect to MongoDB: {e}")
 
+
+# function_to_run()  # Call the function to run the job
 
 app = FastAPI()
 app.include_router(auth_router)
