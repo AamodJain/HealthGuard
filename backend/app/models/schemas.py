@@ -30,3 +30,17 @@ class TokenResponse(BaseModel):
     token: str
     role: str
     token_type: str = "bearer"
+
+class UpdateOut(BaseModel):
+    title: str
+    content: str
+
+    class Config:
+        orm_mode = True
+        
+class AlertOut(BaseModel):
+    title: str
+    content: str
+
+    class Config:
+        orm_mode = True
