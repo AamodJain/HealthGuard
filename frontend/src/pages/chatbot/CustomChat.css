@@ -1,0 +1,18 @@
+.custom-chat-wrapper {
+  height: 600px;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+  background-color: #171717;
+}
+
+/* chatbot.css */
+.iframe-wrapper {
+  background: #1f1f1f;
+  padding: 1rem;
+  border-radius: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}

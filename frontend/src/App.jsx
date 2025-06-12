@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Updates from './pages/updates/updates';
 import Alerts from './pages/alerts/alerts';
 import Map from './pages/maps/map';
+import Chatbot from './pages/chatbot/chatbot';
 import {Toaster} from 'react-hot-toast';
 
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/updates" element={<Updates />} />
         <Route path="/alerts" element={<Alerts />} />
         <Route path="/map" element={<Map />} />
+        <Route path="/chatbot" element={<Chatbot />} />
         {/* Add more routes as needed */}
 
       </Routes>

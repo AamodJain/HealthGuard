@@ -1,0 +1,81 @@
+.chatbot-page {
+  background-color: #171717;
+  color: #ffffff;
+  min-height: 100vh;
+  font-family: "roboto", sans-serif;
+  padding-bottom: 60px;
+}
+
+.chatbot-container {
+  max-width: 1200px;
+  margin: 100px auto 40px;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.chatbot-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-family: "myfont", sans-serif;
+  background: linear-gradient(90deg, #f5b2f1, #cbaaf4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chatbot-subheading {
+  font-size: 1.1rem;
+  color: #aaaaaa;
+  margin-bottom: 2.5rem;
+}
+
+.chatbot-main {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* ✅ FIXED: Make this behave normally in flow */
+.chatbot-left {
+  flex: 1;
+  min-width: 320px;
+  max-width: 500px;
+  height: 450px;
+  opacity: 0.95;
+  pointer-events: none;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* No change needed */
+.chatbot-right {
+  flex: 1;
+  min-width: 400px;
+}
+
+.iframe-wrapper {
+  background: #1f1f1f;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .chatbot-main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chatbot-left,
+  .chatbot-right {
+    max-width: 100%;
+  }
+
+  .chatbot-heading {
+    font-size: 2rem;
+  }
+}
