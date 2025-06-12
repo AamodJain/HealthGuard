@@ -63,7 +63,7 @@ function Register() {
     <div className={styles.container}>
       {/* 3D Background */}
       <div className={styles.splineBackground}>
-        <Spline scene="https://prod.spline.design/9xisgDbk3wn0ofGk/scene.splinecode" />
+        <Spline scene="https://prod.spline.design/kEXDvZEV89W1A4EP/scene.splinecode" />
       </div>
 
       {/* Foreground Form */}

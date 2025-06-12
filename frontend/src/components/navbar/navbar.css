@@ -41,10 +41,10 @@
 }
 
 .home-navbar-links {
-    background-color: #222222;
+    /* background-color: #222222; */
     border-radius: 50px;
     height: 50px;
-    width: 100%;
+    width: 150%;
     max-width: 450px;
     justify-content: center;
     /* width: 100%; */

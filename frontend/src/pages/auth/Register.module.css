@@ -1,12 +1,10 @@
-/* Register.module.css */
-
 .container {
   position: relative;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0d1117;
+  background-color: #171717;
   padding: 1rem;
   overflow: hidden;
 }
@@ -16,9 +14,9 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  pointer-events: none; /* So users can interact with form elements */
-  opacity: 0.15; /* Makes the 3D model translucent */
-  transform: scale(1.5); /* Enlarge the model */
+  pointer-events: none;
+  opacity: 0.5;
+  transform: scale(1.5);
 }
 
 /* Form card styling */
@@ -26,68 +24,80 @@
   z-index: 10;
   width: 100%;
   max-width: 420px;
-  background-color: rgba(22, 27, 34, 0.85);
+  background-color: rgba(30, 30, 30, 0.85);
   padding: 2rem;
   border-radius: 1rem;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.06);
+  border: 1px solid #2e2e2e;
 }
 
 /* Heading */
 .heading {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 700;
   text-align: center;
   margin-bottom: 1.5rem;
-  text-transform: capitalize;
-  color: #ffffff;
+  font-family: "myfont", sans-serif;
+  background: linear-gradient(90deg, white, white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Inputs */
 .input {
   width: 100%;
   padding: 0.75rem;
-  margin-bottom: 0.75rem;
-  background-color: #0d1117;
-  border: 1px solid #30363d;
+  margin-bottom: 0.9rem;
+  background-color: #171717;
+  border: 1px solid #2e2e2e;
   border-radius: 0.5rem;
-  color: #c9d1d9;
+  color: #e0e0e0;
+  font-size: 1rem;
   outline: none;
+  transition: border 0.2s ease;
 }
 
 .input:focus {
-  border-color: #4f46e5;
+  border-color: #cbaaf4;
+  box-shadow: 0 0 5px rgba(203, 170, 244, 0.4);
 }
 
 /* Button */
 .button {
   width: 100%;
   padding: 0.75rem;
-  background-color: #4f46e5;
-  color: white;
+  background: linear-gradient(90deg, #f5b2f1, #cbaaf4);
+  color: #171717;
+  font-weight: 600;
   border: none;
   border-radius: 0.5rem;
-  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.08);
 }
 
 .button:hover {
-  background-color: #3730a3;
+  background: linear-gradient(90deg, #e8a7e5, #b89df2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
 }
 
 /* Text and link */
 .text {
-  margin-top: 0.75rem;
+  margin-top: 0.9rem;
   text-align: center;
   font-size: 0.9rem;
-  color: #cccccc;
+  color: #aaaaaa;
 }
 
 .link {
-  color: #4f46e5;
+  color: #cbaaf4;
   margin-left: 0.4rem;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .link:hover {
