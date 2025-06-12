@@ -8,40 +8,41 @@ import Footer from "../../components/footer/Footer"
 function Home() {
 
   const features = [
-    {
-      icon: Microscope,
-      title: "Data Aggregation & Integration",
-      description: "Integrates epidemiological, clinical, mobility, demographic, environmental, and social media data using seamless API-led connectivity.",
-    },
-    {
-      icon: Radar,
-      title: "AI-Powered Predictive Modeling",
-      description: "Leverages machine learning to identify disease trends and predict outbreak probabilities for early alerts.",
-    },
-    {
-      icon: Activity,
-      title: "Real-Time Monitoring & Alerts",
-      description: "Continuously monitors incoming data streams and instantly notifies authorities of potential outbreaks.",
-    },
-    {
-      icon: Globe,
-      title: "Comprehensive Disease Insights",
-      description: "Combines structured and unstructured data to visualize and analyze disease dynamics, risk factors, and hotspots.",
-    },
-    {
-      icon: Users,
-      title: "Collaboration & Public Engagement",
-      description: "Facilitates communication between health authorities, providers, and the public to coordinate response efforts effectively.",
-    },
-  ]
+  {
+    icon: Microscope,
+    title: "Unified Health Data",
+    description: "Connects clinical, environmental, and social data to give a complete view of disease patterns.",
+  },
+  {
+    icon: Radar,
+    title: "Predictive AI Models",
+    description: "Uses AI to forecast outbreaks early and help authorities act faster.",
+  },
+  {
+    icon: Activity,
+    title: "Live Alerts & Tracking",
+    description: "Tracks cases in real time and sends instant alerts for rapid response.",
+  },
+  {
+    icon: Globe,
+    title: "Smart Visual Insights",
+    description: "Interactive maps and dashboards highlight risk zones and spread patterns.",
+  },
+  {
+    icon: Users,
+    title: "Collaborative Ecosystem",
+    description: "Connects health officials, providers, and citizens for coordinated action.",
+  },
+];
 
   const stats = [
-    { number: "50K+", label: "Data Sources Monitored" },
-    { number: "200+", label: "Outbreaks Predicted Early" },
-    { number: "15M+", label: "Citizens Protected" },
-    { number: "100+", label: "Health Care Providers" },
-    { number: "100+", label: "Medical Experts" }
-  ]
+  { number: "50K+", label: "Sources Monitored" },
+  { number: "200+", label: "Outbreaks Predicted" },
+  { number: "15M+", label: "Lives Impacted" },
+  { number: "100+", label: "Partner Hospitals" },
+  { number: "500+", label: "Health Experts Engaged" }
+];
+
 
   return (
     <div className="home-bg">
@@ -52,7 +53,8 @@ function Home() {
             Welcome to <br />
             <span className="head">HealthGuard</span>
           </h1>
-          <p className="sub-heading">Learning made simple, effective, and engaging</p>
+          <p className="sub-heading">AI-powered disease outbreak prediction & tracking made simple, fast, and reliable</p>
+
         
             <Link to="/login" className="cta-link">
               <button className="cta-button">Get Started</button>

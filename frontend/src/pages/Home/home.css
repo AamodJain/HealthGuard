@@ -13,7 +13,7 @@ body {
   }
   
   .content {
-    margin-top: 150px;
+    margin-top: 100px;
     display: flex;
     position: relative;
     min-height: 80vh;
@@ -25,7 +25,7 @@ body {
     flex-direction: column;
     position: absolute;
     left: 7%;
-    top: 40%;
+    top: 48%;
     transform: translateY(-50%);
     z-index: 2;
     max-width: 400px;

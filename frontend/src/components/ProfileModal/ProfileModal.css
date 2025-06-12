@@ -25,7 +25,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 1.5rem;
+  /* remove comment while adding data in modal */
+  /* margin-bottom: 1.5rem; */
   padding-bottom: 1rem;
   border-bottom: 1px solid #454545;
 }
@@ -80,7 +81,8 @@
 .profile-menu-item.logout {
   color: #f87171;
   border-top: 1px solid #454545;
-  margin-top: 0.5rem;
+  /* remove comment while adding data in modal */
+  /* margin-top: 0.5rem; */
   padding-top: 1rem;
 }
 

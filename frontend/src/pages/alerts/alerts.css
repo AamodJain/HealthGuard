@@ -26,9 +26,9 @@
 
 .alerts-grid {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 2rem;
-  justify-content: center;
+  align-items: center;
 }
 
 .alert-card {
@@ -36,10 +36,14 @@
   border: 1px solid #2e2e2e;
   border-radius: 16px;
   padding: 2rem;
-  width: 320px;
+  width: 100%;
+  max-width: 600px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
 .alert-card:hover {
@@ -49,9 +53,10 @@
 }
 
 .alert-disease {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 0.8rem;
+  margin: 0;
+  text-align: center;
   background: linear-gradient(90deg, #f5b2f1, #cbaaf4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -64,9 +69,10 @@
   padding: 0.4rem 1rem;
   border-radius: 9999px;
   display: inline-block;
-  margin-bottom: 1rem;
   background: #333;
   text-align: center;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .alert-risk[data-risk="High"] {
@@ -89,19 +95,30 @@
   color: #fff;
 }
 
+.alert-states,
+.alert-reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
 .alert-states h3,
 .alert-reasons h3 {
   font-size: 1.1rem;
   color: #cbaaf4;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
+  border-bottom: 1px solid #2e2e2e;
+  padding-bottom: 0.2rem;
 }
 
 .alert-states ul,
 .alert-reasons ul {
-  padding-left: 1rem;
-  line-height: 1.6;
-  color: #d0d0d0;
+  list-style: disc;
+  padding-left: 1.2rem;
   margin: 0;
+  color: #d0d0d0;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 @media (max-width: 768px) {

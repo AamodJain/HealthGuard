@@ -31,7 +31,7 @@ const ProfileModal = ({ isOpen, onClose, onNavigate }) => {
                 </div>
 
                 <div className="profile-modal-menu">
-                    <button
+                    {/* <button
                         className="profile-menu-item"
                         onClick={() => {
                             onNavigate("/profile")
@@ -51,7 +51,7 @@ const ProfileModal = ({ isOpen, onClose, onNavigate }) => {
                     >
                         <BarChart3 size={20} />
                         Dashboard
-                    </button>
+                    </button> */}
 
                     <button className="profile-menu-item logout" onClick={handleLogout}>
                         <LogOut size={20} />
