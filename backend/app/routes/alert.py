@@ -3,7 +3,7 @@ import os
 from app.models.disease import disease  # adjust import to where your Document is defined
 from app.models.mobility import mobility  # adjust import to where your Document is defined
 from fastapi import APIRouter, HTTPException
-from app.models.update import Update  # adjust import to where your Document is defined
+from app.models.alerts import Update  # adjust import to where your Document is defined
 
 # Configure Gemini API key
 genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
