@@ -6,6 +6,7 @@ from mongoengine import connect
 import os
 from dotenv import load_dotenv
 from app.utils.mobility import function_to_run
+from app.utils.diseaseData import simulate  # Import the function to run the job
 
 load_dotenv()
 
@@ -21,6 +22,7 @@ except Exception as e:
 
 
 # function_to_run()  # Call the function to run the job
+simulate()  # Call the function to run the disease simulation
 
 app = FastAPI()
 app.include_router(auth_router)
