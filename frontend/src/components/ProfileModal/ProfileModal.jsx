@@ -1,9 +1,10 @@
-import { User, BarChart3, LogOut } from "lucide-react"
+import { User, AlertTriangle, LogOut } from "lucide-react"
 import { useAuthContext } from '../../context/authContext.jsx';
 import "./ProfileModal.css"
 
 const ProfileModal = ({ isOpen, onClose, onNavigate }) => {
     const { authUser } = useAuthContext();
+    // console.log(authUser);
     // const { user, logout } = useAuth()
 
     if (!isOpen) return null
@@ -31,18 +32,20 @@ const ProfileModal = ({ isOpen, onClose, onNavigate }) => {
                 </div>
 
                 <div className="profile-modal-menu">
-                    {/* <button
-                        className="profile-menu-item"
-                        onClick={() => {
-                            onNavigate("/profile")
-                            onClose()
-                        }}
-                    >
-                        <User size={20} />
-                        Profile
-                    </button>
+                    {authUser.role === "Medical Official" && (
+                        <button
+                            className="profile-menu-item"
+                            onClick={() => {
+                                onNavigate("/alerts");
+                                onClose();
+                            }}
+                        >
+                            <AlertTriangle size={20} />
+                            Alerts
+                        </button>
+                    )}
 
-                    <button
+                    {/* <button
                         className="profile-menu-item"
                         onClick={() => {
                             onNavigate("/dashboard")

@@ -26,7 +26,7 @@
   align-items: center;
   gap: 12px;
   /* remove comment while adding data in modal */
-  /* margin-bottom: 1.5rem; */
+  margin-bottom: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid #454545;
 }
@@ -82,7 +82,7 @@
   color: #f87171;
   border-top: 1px solid #454545;
   /* remove comment while adding data in modal */
-  /* margin-top: 0.5rem; */
+  margin-top: 0.5rem;
   padding-top: 1rem;
 }
 
