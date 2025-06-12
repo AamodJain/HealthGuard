@@ -13,3 +13,4 @@ bcrypt==3.2.0
 schedule
 pandas
 numpy
+bs4

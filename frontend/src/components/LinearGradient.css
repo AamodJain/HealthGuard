@@ -1,0 +1,24 @@
+.gradient-container {
+  width: 100%;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+.linear-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.fill {
+  flex: 1;
+}
+
+.gradient-bar {
+  height: 16px;
+  border-radius: 4px;
+  width: 100%;
+}

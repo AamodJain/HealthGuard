@@ -7,11 +7,11 @@ import Profile from './pages/profile/profile';
 import RoleSelection from "./pages/auth/RoleSelection";
 import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
-import Dashboard from './pages/Dashboard/Dashboard';
 import Updates from './pages/updates/updates';
 import Alerts from './pages/alerts/alerts';
 import Map from './pages/maps/map';
 import Chatbot from './pages/chatbot/chatbot';
+import Dashboard from './pages/Dashboard/Dashboard';
 import {Toaster} from 'react-hot-toast';
 
 

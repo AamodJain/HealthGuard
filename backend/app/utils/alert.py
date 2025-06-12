@@ -7,18 +7,24 @@ from app.models.alerts import Alerts  # adjust import to where your Document is 
 from mongoengine.queryset.visitor import Q
 import os
 from dotenv import load_dotenv
+import schedule
+from time import sleep
+import json
+from app.utils.event_news import generate_event_based_health_alerts 
+
 
 load_dotenv() 
 
-# Configure Gemini API key
 
-router = APIRouter()
-@router.post("/generate/alert")
-async def generate_alert():
-    genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
+def func():
+
+
+    genai.configure(api_key=os.getenv('GENAI_API_KEY'))
     diseases = disease.objects()
 
     for d in diseases:
+        generate_event_based_health_alerts(disease=d.diseaseName, contagiousness=d.spreadfactor, state=d.stateName, api_key="730decbd9b2afd2261d5829877563b3e")
+
         state = d.stateName
         # Find mobility entries where either state1 or state2 matches the disease state
         entries = mobility.objects(Q(state1=state) | Q(state2=state))
@@ -36,12 +42,12 @@ async def generate_alert():
             continue  # No connected mobility data
     model= genai.GenerativeModel(
             model_name="gemini-2.0-flash",
-            safety_settings=[
-                {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-                {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-                {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-                {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-            ],
+            # safety_settings=[
+            #     {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+            #     {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+            #     {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+            #     {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+            # ],
             generation_config={
                 "temperature": 1,
                 "top_p": 0.95,
@@ -63,18 +69,28 @@ async def generate_alert():
     """
 
         # Call Gemini
-    response = model.generate_content(contents=prompt)
-
-        # Parse Gemini output (assumes valid JSON)
+    response = model.generate_content(prompt)
+    # print(response.text)
+        # Grab the raw JSON string
+    json_str = response.text
+        
+        # Parse it safely
     try:
-            result = response.choices[0].message.content.strip()
-            alert_data = eval(result)  # safer JSON parse recommended in production
-            title_jsx = alert_data['title']
-            content_jsx = alert_data['content']
+        alert_data = json.loads(json_str)
+    except json.JSONDecodeError as e:
+        print(f"JSON parse error for {d.id}: {e}")
+        
+    print(alert_data)
+    #     # Pull out your JSX strings
+    title_jsx   = alert_data[0].get("title", "")
+    content_jsx = alert_data[0].get("content", "")
 
-            # Save to Update collection
-            update = Alerts(title=title_jsx, content=content_jsx)
-            update.save()
-            print(f"Alert saved for {target_state} about {d.diseaseName}")
-    except Exception as e:
-            print(f"Failed to generate alert for {d.id}: {e}")
+        # Save to your DB
+    alerts = Alerts(title=title_jsx, content=content_jsx)
+    alerts.save()
+def genAlert():
+    schedule.every(0.1).minutes.do(func)
+    print("Starting simulation scheduler (run every 2 minutes)...")
+    while True:
+        schedule.run_pending()
+        sleep(1)

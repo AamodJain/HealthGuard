@@ -25,7 +25,20 @@ states = [
     "JH", "KA", "MP", "MH", "MN", "ML", "MZ", "NL", "OR", "PB", "RJ", "SK",
     "TN", "UK", "UP", "WB", "AN", "CH", "DH", "DD", "DL", "LD", "PY"
 ]
-
+DISEASE_LIST = [
+    "Nipah virus disease",
+    "Zika virus disease",
+    "Dengue fever",
+    "Chikungunya",
+    "Avian influenza A (H5N1)",
+    "Crimean-Congo haemorrhagic fever",
+    "Monkeypox (Mpox)",
+    "Severe Acute Respiratory Syndrome (SARS-related coronaviruses)",
+    "Middle East Respiratory Syndrome coronavirus (MERS-CoV)",
+    "Rift Valley fever",
+    "Cholera (Vibrio cholerae O139)",
+    "Shigella dysenteriae serotype 1",
+]
 populations = {
     'AP': 55, 'KL': 35, 'TR': 4, 'AR': 1.5, 'AS': 35, 'BR': 125, 'CG': 30,
     'GA': 1.5, 'GJ': 70, 'HR': 30, 'HP': 7, 'JK': 14, 'JH': 40, 'KA': 70,
@@ -58,46 +71,145 @@ populations = {
 
 
 # Pydantic model for AI response validation
-class AIdisease(BaseModel):
-    diseaseName: str
-    synonyms: List[str]
-    symptoms: str
-    spreadfactor: int
-    stateName: str
-    totalCases: int
-    activeCases: int
-    deaths: int
 
+
+# def insert_dummy_disease_record(max_retries: int = 1) -> disease:
+#     genai.configure(api_key=os.getenv("GENAI_API_KEY"))
+#     """
+#     Generate and insert a dummy contagious disease record (pandemic potential)
+#     diseases must be one of Dengue
+
+# Chikungunya
+# Malaria
+# Japanese Encephalitis
+# Zika Virus
+# COVID-19
+# Swine Flu (H1N1 Influenza)
+# Acute Diarrheal Disease
+
+# Typhoid
+
+# Cholera
+
+# Measles
+
+# Scrub Typhus
+
+# Nipah Virus
+
+# Leptospirosis
+
+# Tuberculosis (in urban slums or crowded areas)
+#     with structured JSON from Gemini.
+#     Retries up to `max_retries` if disease-state pair exists (matching synonyms).
+#     """
+#     # init_db()
+#     attempts = 0
+
+#     while attempts < max_retries:
+#         prompt = (
+#             "You are to output ONLY a JSON object that strictly follows this schema:\n"
+#             "{\n"
+#             "  \"diseaseName\": string,         // primary name of the disease\n"
+#             "  \"synonyms\": [string],           // list of equivalent names\n"
+#             "  \"symptoms\": string,            // description of symptoms\n"
+#             "  \"spreadfactor\": integer,       // 1 to 10\n"
+#             "  \"stateName\": string,           // one of these state codes: " + str(states) + "\n"
+#             "  \"totalCases\": integer,         // ≤ 0.5 * population\n"
+#             "  \"activeCases\": integer,        // + deaths ≤ totalCases\n"
+#             "  \"deaths\": integer               // ≤ 0.1 * population\n"
+#             "}\n"
+#             "disease should be one of these: Dengue, Chikungunya, Malaria, Japanese Encephalitis, Zika Virus, COVID-19, Swine Flu (H1N1 Influenza), Acute Diarrheal Disease, Typhoid, Cholera, Measles, Scrub Typhus, Nipah Virus, Leptospirosis, Tuberculosis (in urban slums or crowded areas).\n"
+#             "make sure that initiall  try that cases are low as compared to population, and deaths are low as compared to cases.\n"
+#             "Use the populations mapping (in millions) for constraints: " + str(populations) + ".\n"
+#             "Ensure `totalCases <= int(0.5 * population * 1_000_000)` and `deaths <= int(0.1 * population * 1_000_000)`\n"
+#             "Respond with no extra text, only the JSON object."
+#         )
+
+#         temp=genai.GenerativeModel(
+#             model_name="gemini-2.0-flash",
+#             safety_settings=[
+#                 {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+#                 {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+#                 {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+#                 {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
+#             ],
+#             generation_config={
+#                 "temperature": 1,
+#                 "top_p": 0.95,
+#                 "top_k": 64,
+#                 "max_output_tokens": 8192,
+#                 "response_mime_type": "application/json",
+#             }
+#         )
+#         ai_resp = temp.generate_content(
+#             contents=prompt
+#         )
+
+#         try:
+#             data = json.loads(ai_resp.text)
+#             record = AIdisease(**data)
+#         except Exception:
+#             attempts += 1
+#             continue
+
+#         # Check for existing record (including synonyms)
+#         query_names = [record.diseaseName] + record.synonyms
+#         if disease.objects(Q(stateName=record.stateName) & Q(diseaseName__in=query_names)).first():
+#             attempts += 1
+#             continue
+
+#         # Save new record
+#         new_record = disease(
+#             diseaseName=record.diseaseName,
+#             symptoms=record.symptoms,
+#             spreadfactor=record.spreadfactor,
+#             stateName=record.stateName,
+#             population=int(populations[record.stateName] * 1_000_000),
+#             totalCases=record.totalCases,
+#             activeCases=record.activeCases,
+#             deaths=record.deaths
+#         )
+#         new_record.save()
+#         return new_record
+#     return None  # or raise an exception if you prefer
+#     # raise RuntimeError(f"Failed after {max_retries} attempts: duplicate disease-state pairs")
 
 def insert_dummy_disease_record(max_retries: int = 1) -> disease:
-    """
-    Generate and insert a dummy contagious disease record (pandemic potential) with structured JSON from Gemini.
-    Retries up to `max_retries` if disease-state pair exists (matching synonyms).
-    """
-    # init_db()
+    genai.configure(api_key=os.getenv("GENAI_API_KEY"))
     attempts = 0
-
     while attempts < max_retries:
-        prompt = (
-            "You are to output ONLY a JSON object that strictly follows this schema:\n"
-            "{\n"
-            "  \"diseaseName\": string,         // primary name of the disease\n"
-            "  \"synonyms\": [string],           // list of equivalent names\n"
-            "  \"symptoms\": string,            // description of symptoms\n"
-            "  \"spreadfactor\": integer,       // 1 to 10\n"
-            "  \"stateName\": string,           // one of these state codes: " + str(states) + "\n"
-            "  \"totalCases\": integer,         // ≤ 0.5 * population\n"
-            "  \"activeCases\": integer,        // + deaths ≤ totalCases\n"
-            "  \"deaths\": integer               // ≤ 0.1 * population\n"
-            "}\n"
-            "make sure that initiall  try that cases are low as compared to population, and deaths are low as compared to cases.\n"
-            "Use the populations mapping (in millions) for constraints: " + str(populations) + ".\n"
-            "Ensure `totalCases <= int(0.5 * population * 1_000_000)` and `deaths <= int(0.1 * population * 1_000_000)`\n"
-            "Respond with no extra text, only the JSON object."
-        )
+        # 1) Pick a truly random pair in Python:
+        chosen_disease = random.choice(DISEASE_LIST)
+        chosen_state   = random.choice(states)
 
-        temp=genai.GenerativeModel(
-            model_name="gemini-2.0-flash",
+        # 2) If that pair already exists, just retry:
+        if disease.objects(stateName=chosen_state, diseaseName=chosen_disease).first():
+            attempts += 1
+            continue
+
+        # 3) Build a prompt that fixes the diseaseName & stateName,
+        #    and asks Gemini to generate only the other fields:
+        prompt = f"""
+You are a JSON-only generator.  Do NOT output any extra text.
+
+Produce exactly this object schema:
+
+{{
+  "symptoms": string,
+  "spreadfactor": integer,       // 1 to 10
+  "totalCases": integer,         // ≤ 0.5 * population
+  "activeCases": integer,        // + deaths ≤ totalCases
+  "deaths": integer              // ≤ 0.1 * population
+}}
+
+Use diseaseName="{chosen_disease}" and stateName="{chosen_state}".  
+Use the population for {chosen_state} (in millions): {populations[chosen_state]} to compute the maxima.
+Ensure all numeric constraints hold.  Only emit the JSON object.
+"""
+        # 4) Call Gemini exactly as before:
+        gm = genai.GenerativeModel(
+            model_name=MODEL,
             safety_settings=[
                 {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
                 {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
@@ -108,44 +220,37 @@ def insert_dummy_disease_record(max_retries: int = 1) -> disease:
                 "temperature": 1,
                 "top_p": 0.95,
                 "top_k": 64,
-                "max_output_tokens": 8192,
+                "max_output_tokens": 1024,
                 "response_mime_type": "application/json",
             }
         )
-        ai_resp = temp.generate_content(
-            contents=prompt
-        )
+        ai_resp = gm.generate_content(contents=prompt)
 
+        # 5) Parse and validate:
         try:
             data = json.loads(ai_resp.text)
-            record = AIdisease(**data)
+            validated = disease(
+                diseaseName=chosen_disease,
+                stateName=chosen_state,
+                **data
+            )
         except Exception:
             attempts += 1
             continue
 
-        # Check for existing record (including synonyms)
-        query_names = [record.diseaseName] + record.synonyms
-        if disease.objects(Q(stateName=record.stateName) & Q(diseaseName__in=query_names)).first():
-            attempts += 1
-            continue
-
-        # Save new record
-        new_record = disease(
-            diseaseName=record.diseaseName,
-            symptoms=record.symptoms,
-            spreadfactor=record.spreadfactor,
-            stateName=record.stateName,
-            population=int(populations[record.stateName] * 1_000_000),
-            totalCases=record.totalCases,
-            activeCases=record.activeCases,
-            deaths=record.deaths
+        # 6) Persist:
+        new_rec = disease(
+            diseaseName = chosen_disease,
+            symptoms    = validated.symptoms,
+            spreadfactor= validated.spreadfactor,
+            stateName   = chosen_state,
+            population  = int(populations[chosen_state] * 1_000_000),
+            totalCases  = validated.totalCases,
+            activeCases = validated.activeCases,
+            deaths      = validated.deaths,
         )
-        new_record.save()
-        return new_record
-    return None  # or raise an exception if you prefer
-    # raise RuntimeError(f"Failed after {max_retries} attempts: duplicate disease-state pairs")
-
-
+        new_rec.save()
+        return new_rec
 def safe_gauss(mu: float):
     """Integer draw ~ N(mu, σ²) with σ = √(max(mu,0)+1)."""
     sigma = math.sqrt(max(mu, 0) + 1)
@@ -210,7 +315,7 @@ def simulate_day():
               f"→ Tot={T2:5.0f}, Act={I2:4.0f}, Dth={D2:4.0f}")
 
 def simulate():
-    schedule.every(0.1).minutes.do(simulate_day)
+    schedule.every(1).minutes.do(simulate_day)
 
     print("Starting simulation scheduler (run every 2 minutes)...")
     while True:

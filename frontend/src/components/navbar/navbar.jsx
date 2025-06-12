@@ -30,8 +30,9 @@ function Navbar() {
       <div className="home-navbar-brand" >HealthGuard</div>
       <div><ul className="home-navbar-links">
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/chatbot">Chatbot</Link></li>
         <li><Link to="/updates">Updates</Link></li>
+        <li><Link to="/dashboard">Dashboard</Link></li>
+        <li><Link to="/chatbot">Chatbot</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/contact">Contact</Link></li>
       </ul></div>

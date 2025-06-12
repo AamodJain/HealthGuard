@@ -4,7 +4,7 @@ import json
 import google.generativeai as genai
 from typing import List, Dict
 from bs4 import BeautifulSoup
-from models import Update
+from app.models.alerts import Alerts
 import datetime
 
 
@@ -43,7 +43,7 @@ def get_state_event_news(state_name: str, access_key: str):
 
 def filter_event_articles_by_state(articles: list[dict], state_name: str) -> list[dict]:
 
-    genai.configure(api_key="AIzaSyDYw1YVJuNvnzWZp46b7Snnpi73L21kx80")
+    genai.configure(api_key="AIzaSyD86jtICsmDUpJEKvLWfffpgE3ZzLumSsg")
 
     client = genai.GenerativeModel(
         model_name="gemini-1.5-flash",
@@ -207,34 +207,71 @@ Only return the JSX code, nothing else.
 
 
 def save_alert_to_mongo(title: str, jsx_content: str):
-    alert = Update(title=title, content=jsx_content)
+    alert = Alerts(title=title, content=jsx_content)
     alert.save()
     print("✅ Alert saved to MongoDB.")
 
 
-if __name__ == "__main__":
-    state = "Rajasthan"
-    api_key = "730decbd9b2afd2261d5829877563b3e"  # Replace with your actual key
+# if __name__ == "__main__":
+#     state = "Rajasthan"
+#     api_key = "730decbd9b2afd2261d5829877563b3e"  # Replace with your actual key
+#     news = get_state_event_news(state, api_key)
+
+#     event_articles = filter_event_articles_by_state(news, state)
+
+#     for i, item in enumerate(news, start=1):
+#         print(f"{i}. {item['title']}\n   {item['description']}\n")
+
+#     for article in event_articles:
+#         print(f"\n✅ EVENT ARTICLE:\nTitle: {article['title']}\nDescription: {article['description']}")
+#         print(f"🔗 URL: {article['url']}")
+
+#         summary = summarize_article_content(article['url'])
+#         print(f"\n📝 SUMMARY:\n{summary}\n{'-'*80}")
+
+#         disease = "Swine Flu"
+#         contagiousness = 7
+
+#         jsx_alert = generate_health_alert(summary, disease, state, contagiousness)
+#         print(jsx_alert)
+
+#         heading = f"Alert: Possible {disease} Spread at Upcoming Event in {state}"
+#         save_alert_to_mongo(title=heading, jsx_content=jsx_alert)
+    
+def generate_event_based_health_alerts(state: str, disease: str, contagiousness: int, api_key: str):
+    """
+    Generate JSX-based health alerts based on state-specific news and disease context.
+
+    Args:
+        state (str): Name of the state (e.g., "Rajasthan").
+        disease (str): Disease to check for (e.g., "Swine Flu").
+        contagiousness (int): Scale from 1 to 10.
+        api_key (str): Your news API key.
+    """
+    # Step 1: Get news articles for the state
     news = get_state_event_news(state, api_key)
 
+    # Step 2: Filter articles that are likely events
     event_articles = filter_event_articles_by_state(news, state)
 
-    for i, item in enumerate(news, start=1):
-        print(f"{i}. {item['title']}\n   {item['description']}\n")
+    # Step 3: Print all fetched news (optional)
+    # for i, item in enumerate(news, start=1):
+    #     print(f"{i}. {item['title']}\n   {item['description']}\n")
 
+    # Step 4: Generate and store alerts for each event article
     for article in event_articles:
-        print(f"\n✅ EVENT ARTICLE:\nTitle: {article['title']}\nDescription: {article['description']}")
-        print(f"🔗 URL: {article['url']}")
+        # print(f"\n✅ EVENT ARTICLE:\nTitle: {article['title']}\nDescription: {article['description']}")
+        # print(f"🔗 URL: {article['url']}")
 
+        # Step 5: Summarize the article
         summary = summarize_article_content(article['url'])
-        print(f"\n📝 SUMMARY:\n{summary}\n{'-'*80}")
+        # print(f"\n📝 SUMMARY:\n{summary}\n{'-'*80}")
 
-        disease = "Swine Flu"
-        contagiousness = 7
-
+        # Step 6: Generate JSX alert content
         jsx_alert = generate_health_alert(summary, disease, state, contagiousness)
         print(jsx_alert)
 
+        # Step 7: Save to MongoDB
         heading = f"Alert: Possible {disease} Spread at Upcoming Event in {state}"
         save_alert_to_mongo(title=heading, jsx_content=jsx_alert)
-    
+
