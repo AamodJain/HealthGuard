@@ -1,5 +1,8 @@
 # HealthGuard: AI-Powered Disease Outbreak Prediction
 
+![image](https://github.com/user-attachments/assets/85e9d3bc-42f2-4aaf-884b-61e051e0db53)
+
+
 ## 📖 Project Description
 HealthGuard is a Generative AI-based predictive analytics solution designed to help public health organizations detect and respond to early-stage infectious disease outbreaks.
 
